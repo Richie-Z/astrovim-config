@@ -1,9 +1,14 @@
 return {
-  -- Add the community repository of plugin specifications
   "AstroNvim/astrocommunity",
-  -- example of imporing a plugin, comment out to use it or add your own
-  -- available plugins can be found at https://github.com/AstroNvim/astrocommunity
-
-  -- { import = "astrocommunity.colorscheme.catppuccin" },
-  -- { import = "astrocommunity.completion.copilot-lua-cmp" },
+  { import = "astrocommunity.colorscheme.monokai-pro-nvim" },
+  {
+    "loctvl842/monokai-pro.nvim",
+    config = function()
+      require("monokai-pro").setup {
+        filter = "classic", -- classic | octagon | pro | machine | ristretto | spectrum
+      }
+    end,
+  },
+  { import = "astrocommunity.pack.lua" },
+  { import = "astrocommunity.pack.typescript" },
 }
