@@ -1,28 +1,34 @@
--- Mapping data with "desc" stored directly by vim.keymap.set().
---
--- Please use this mappings table to set keyboard mapping since this is the
--- lower level configuration and more robust one. (which-key will
--- automatically pick-up stored data by this setting.)
 return {
-  -- first key is the mode
   n = {
-    -- second key is the lefthand side of the map
-    -- mappings seen under group name "Buffer"
     ["<leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
-    ["<leader>bD"] = {
+    ["<lader>bD"] = {
       function()
-        require("astronvim.utils.status").heirline.buffer_picker(function(bufnr) require("astronvim.utils.buffer").close(bufnr) end)
+        require("astronvim.utils.status").heirline.buffer_picker(
+          function(bufnr) require("astronvim.utils.buffer").close(bufnr) end
+        )
       end,
       desc = "Pick to close",
     },
-    -- tables with the `name` key will be registered with which-key if it's installed
-    -- this is useful for naming menus
     ["<leader>b"] = { name = "Buffers" },
-    -- quick save
-    -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
-  },
-  t = {
-    -- setting a mapping to false will disable it
-    -- ["<esc>"] = false,
+    ["<C-h>"] = { "<cmd>TmuxNavigateLeft<cr>", desc = "Window Left" },
+    ["<C-l>"] = { "<cmd>TmuxNavigateRight<cr>", desc = "Window Right" },
+    ["<C-j>"] = { "<cmd>TmuxNavigateDown<cr>", desc = "Window Down" },
+    ["<C-k>"] = { "<cmd>TmuxNavigateUp<cr>", desc = "Window Up" },
+
+    ["o"] = { "o<esc>", desc = "Open new line then go to normal mode" },
+    ["O"] = { "O<esc>", desc = "Open new line upper then go to normal mode" },
+    ["n"] = { "nzz", desc = "center cursor vertically during search" },
+    ["N"] = { "Nzz", desc = "center cursor vertically during search (reverse)" },
+    ["J"] = { "mzJ`z", desc = "Join line with line below" },
+    ["<C-d>"] = { "<C-d>zz", desc = "Scroll screen down and center cursor" },
+    ["<C-u>"] = { "<C-u>zz", desc = "Scroll screen up and center cursor" },
+    ["<C-L>"] = { [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], desc = "Search and replace" },
+    ["<leader>fs"] = { "<CMD>Telescope lsp_document_symbols<CR>", desc = "Show outline" },
+    ["<C-p>"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", desc = "Find all" },
+
+    ["f"] = { "<Plug>Sneak_f", desc = "Use Sneak forward" },
+    ["F"] = { "<Plug>Sneak_F", desc = "Use Sneak backward" },
+    ["t"] = { "<Plug>Sneak_t", desc = "Use Sneak till forward" },
+    ["T"] = { "<Plug>Sneak_T", desc = "Use Sneak till backward" },
   },
 }
