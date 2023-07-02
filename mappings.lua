@@ -1,5 +1,13 @@
 return {
   n = {
+    ["<leader>c"] = {
+      function()
+        local bufs = vim.fn.getbufinfo { buflisted = true }
+        require("astronvim.utils.buffer").close(0)
+        if require("astronvim.utils").is_available "alpha-nvim" and not bufs[2] then require("alpha").start(true) end
+      end,
+      desc = "Close buffer",
+    },
     ["<leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
     ["<lader>bD"] = {
       function()
@@ -22,13 +30,12 @@ return {
     ["J"] = { "mzJ`z", desc = "Join line with line below" },
     ["<C-d>"] = { "<C-d>zz", desc = "Scroll screen down and center cursor" },
     ["<C-u>"] = { "<C-u>zz", desc = "Scroll screen up and center cursor" },
-    ["<C-L>"] = { [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], desc = "Search and replace" },
+    ["<leader>s"] = { [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], desc = "Search and replace" },
     ["<leader>fs"] = { "<CMD>Telescope lsp_document_symbols<CR>", desc = "Show outline" },
-    ["<C-p>"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", desc = "Find all" },
+    ["<C-p>"] = { "<cmd> Telescope find_files follow=true no_ignore=false hidden=false <CR>", desc = "Find all" },
+  },
 
-    ["f"] = { "<Plug>Sneak_f", desc = "Use Sneak forward" },
-    ["F"] = { "<Plug>Sneak_F", desc = "Use Sneak backward" },
-    ["t"] = { "<Plug>Sneak_t", desc = "Use Sneak till forward" },
-    ["T"] = { "<Plug>Sneak_T", desc = "Use Sneak till backward" },
+  t = {
+    ["jk"] = { [[<C-\><C-n>]], desc = "Exit Terminal" },
   },
 }
