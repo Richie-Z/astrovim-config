@@ -1,14 +1,11 @@
 return {
   { "christoomey/vim-tmux-navigator", lazy = false },
-  "folke/twilight.nvim",
+  { "easymotion/vim-easymotion", event = "User AstroFile" },
+  { "mg979/vim-visual-multi", event = "User AstroFile" },
   {
-    "folke/zen-mode.nvim",
-    keys = {
-      { "<leader>zz", "<cmd>ZenMode<cr>", desc = "Toggle Zen Mode" },
+    "rcarriga/nvim-notify",
+    opts = {
+      background_colour = "#000000",
     },
   },
-  { "tpope/vim-surround", event = "User AstroFile" },
-  { "easymotion/vim-easymotion", event = "User AstroFile" },
-  { "justinmk/vim-sneak", event = "User AstroFile" },
-  { "mg979/vim-visual-multi", event = "User AstroFile" },
 }
