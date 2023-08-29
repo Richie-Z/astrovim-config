@@ -1,12 +1,22 @@
+local function open_dashboard_when_no_buffer()
+  if require("astronvim.utils").is_available "alpha-nvim" then require("alpha").start(true) end
+end
+
 return {
   n = {
     ["<leader>c"] = {
       function()
-        local bufs = vim.fn.getbufinfo { buflisted = true }
-        require("astronvim.utils.buffer").close(0)
-        if require("astronvim.utils").is_available "alpha-nvim" and not bufs[2] then require("alpha").start(true) end
+        require("astronvim.utils.buffer").close()
+        open_dashboard_when_no_buffer()
       end,
       desc = "Close buffer",
+    },
+    ["<leader>bC"] = {
+      function()
+        require("astronvim.utils.buffer").close_all()
+        open_dashboard_when_no_buffer()
+      end,
+      desc = "Close all buffers",
     },
     ["<leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
     ["<lader>bD"] = {

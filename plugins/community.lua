@@ -10,11 +10,13 @@ return {
       }
     end,
   },
+  { import = "astrocommunity.lsp.lsp-inlayhints-nvim" },
+  { import = "astrocommunity.lsp.lsp-signature-nvim" },
+
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.typescript" },
-  { import = "astrocommunity.pack.php" },
   { import = "astrocommunity.pack.vue" },
-  { import = "astrocommunity.pack.html-css" },
+  { import = "astrocommunity.pack.java" },
   { import = "astrocommunity.pack.tailwindcss" },
 
   { import = "astrocommunity.motion.flit-nvim" },
