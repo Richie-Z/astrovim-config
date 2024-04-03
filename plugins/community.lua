@@ -10,6 +10,8 @@ return {
       }
     end,
   },
+  { import = "astrocommunity.completion.codeium-vim" },
+
   { import = "astrocommunity.lsp.lsp-inlayhints-nvim" },
   { import = "astrocommunity.lsp.lsp-signature-nvim" },
 
